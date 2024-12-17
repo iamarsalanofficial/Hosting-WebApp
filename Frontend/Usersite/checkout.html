@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Namoverse</title>    
+    <link rel="stylesheet" href="assets/css/checkout.css" />
+    <style>
+        :root {
+            --primary: #8A3FFC;
+            --primary-dark: #7B2FEF;
+            --background: #0A0A0A;
+            --text: #FFFFFF;
+            --input-bg: #1A1A1A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .notification {
+            background-color: var(--primary);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: white;
+        }
+
+        .order-summary {
+            background-color: var(--primary);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .total {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+     <!-- Start Main Navbar -->
+     <nav>
+        <div class="navbar">
+            <div class="logo">
+                <a href="#">
+                    <img
+                        src="assets/img/logo-new.png"
+                        alt=""
+                        width="400px"
+                    />
+                </a>
+            </div>
+            <div class="nav-tabs">
+                <ul class="inline-tabs">
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Pakage</a></li>
+                    <li><a href="#">Why Choose Us</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-cart">
+                    <img src="assets/img/shopping_cart.svg" alt="" />
+                </button>
+                <button class="nav-account">
+                    <img src="assets/img/person.svg" alt="" />
+                </button>
+                <button class="nav-started">Get Started</button>
+            </div>
+        </div>
+    </nav>
+    <!-- End Main Navbar -->
+
+    <div class="container">
+        <div class="notification">
+            <span>"Namo Go - 2 Years" has been added to your cart.</span>
+            <button class="button">View cart</button>
+        </div>
+
+        <div class="checkout-grid">
+            <div class="billing-details">
+                <h2>Billing Details</h2>
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Country/Region</label>
+                        <select class="form-control" required>
+                            <option value="US">United States (US)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Street Address</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Town/City</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State</label>
+                        <select class="form-control" required>
+                            <option value="CA">California</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>ZIP Code</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Account Username</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h2>Your Order</h2>
+                <div class="order-row">
+                    <span>Namo Starter - 3 Years × 1</span>
+                    <span>$360.00</span>
+                </div>
+                <div class="order-row">
+                    <span>Namo Go - 3 Years × 1</span>
+                    <span>$648.00</span>
+                </div>
+                <div class="order-row">
+                    <span>Namo Go - 2 Years × 1</span>
+                    <span>$456.00</span>
+                </div>
+                <div class="order-row">
+                    <span>Subtotal</span>
+                    <span>$1,464.00</span>
+                </div>
+                <div class="order-row">
+                    <span>Fee</span>
+                    <span>$65.88</span>
+                </div>
+                <div class="order-row total">
+                    <strong>Total</strong>
+                    <strong>$1,529.88</strong>
+                </div>
+
+                <div class="payment-section">
+                    <h3>PayPal</h3>
+                    <button class="button" style="width: 100%; margin-top: 1rem;">Pay via PayPal</button>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I have read and agree to the website terms and conditions</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add payment processing logic here
+            alert('Processing payment...');
+        });
+
+        // Add to cart notification
+        setTimeout(() => {
+            const notification = document.querySelector('.notification');
+            if (notification) {
+                notification.style.display = 'none';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

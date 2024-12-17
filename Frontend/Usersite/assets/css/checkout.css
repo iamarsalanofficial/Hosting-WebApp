@@ -1,0 +1,51 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+}
+.inline-tabs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 25px;
+}
+.inline-tabs > li {
+    list-style-type: none;
+    margin: 10px;
+}
+.inline-tabs > li > a {
+    text-decoration: none;
+    color: white;
+}
+.nav-buttons {
+    display: flex;
+    align-items: center;
+}
+.nav-buttons {
+    gap: 20px;
+}
+.nav-cart {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6rem;
+    text-decoration: none;
+    padding: 20px;
+}
+.nav-account {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6rem;
+    text-decoration: none;
+    padding: 20px;
+}
+.nav-started {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
