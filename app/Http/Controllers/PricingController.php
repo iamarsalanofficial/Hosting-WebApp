@@ -19,11 +19,5 @@ class PricingController extends Controller
         return view('pricing', ['plans' => $plans]);
      }
  
-     // Handle purchase action
-     public function processPurchase(Request $request)
-     {
-         $plan = $request->input('plan');
-         // Yahan plan ke data ko process karen (validation, payment, etc.)
-         return redirect()->route('pricing.page')->with('success', 'Purchase successful for plan: ' . $plan);
-     }
+     
 }

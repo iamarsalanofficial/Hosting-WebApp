@@ -69,10 +69,10 @@
                         <label>Email Address</label>
                         <input type="email" name="email" class="form-control" required>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Account Username</label>
                         <input type="text" name="username" class="form-control" required>
-                    </div>
+                    </div> --}}
 
                     <div class="checkbox-group">
                         <input type="checkbox" name="terms" id="terms" required>

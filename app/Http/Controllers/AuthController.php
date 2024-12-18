@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
-{
-    //
-    // public function login()
-    // {    
-    //     return view('index');
-       
-    // }
+{ 
     public function login()
     {
         // dd(Hash::make('123456'));

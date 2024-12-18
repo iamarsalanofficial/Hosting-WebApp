@@ -8,12 +8,10 @@ use App\Http\Controllers\DashboardController;
 
 
 
-
-
 Route::get('/pricing', [PricingController::class, 'showPricing'])->name('pricing.page');
-Route::post('/purchase', [PricingController::class, 'processPurchase'])->name('purchase.plan');
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'show'])->name('checkout.process');
+
 
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
@@ -27,9 +25,6 @@ Route::get('/reset/{token}', [AuthController::class, 'reset']);
 Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
 Route::group(['middleware' => 'admin'], function () {
-    // Route::get('/admin/index', function() {
-    //     return view('admin.index');
-    // });
     Route::get('admin/index', [DashboardController::class, 'dashboard']);
     // Route::get('admin/admin/list', [AdminController::class, 'list']);
     // Route::get('admin/admin/add', [AdminController::class, 'add']);
