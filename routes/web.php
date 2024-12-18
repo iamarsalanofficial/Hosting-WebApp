@@ -8,7 +8,7 @@ use App\Http\Controllers\DashboardController;
 
 
 
-Route::get('/pricing', [PricingController::class, 'showPricing'])->name('pricing.page');
+Route::get('/pricing', [CheckoutController::class, 'showPricing'])->name('pricing.page');
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'show'])->name('checkout.process');
 

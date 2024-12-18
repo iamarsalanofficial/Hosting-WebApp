@@ -69,47 +69,43 @@
                         <label>Email Address</label>
                         <input type="email" name="email" class="form-control" required>
                     </div>
-                    {{-- <div class="form-group">
-                        <label>Account Username</label>
-                        <input type="text" name="username" class="form-control" required>
-                    </div> --}}
 
                     <div class="checkbox-group">
                         <input type="checkbox" name="terms" id="terms" required>
                         <label for="terms">I have read and agree to the terms and conditions</label>
                     </div>
-
-
             </div>
 
             <div class="order-summary">
                 <h2>Your Order</h2>
-                @if (isset($plan_duration) && isset($plan_price))
-                    <div class="order-row">
-                        <span>{{ $plan_duration }} × 1</span>
-                        <span>{{ $plan_price }}</span>
-                    </div>
+                @if (!empty($orderSummary))
+                    @foreach ($orderSummary as $order)
+                        <div class="order-row">
+                            <span>{{ $order['name'] }} × {{ $order['quantity'] }}</span>
+                            <span>${{ number_format($order['price'], 2) }}</span>
+                            <span>(Monthly: ${{ $order['price_per_month'] }})</span>
+                        </div>
+                    @endforeach
                 @else
-                    <div class="order-row">
-                        <span>Default Plan × 1</span>
-                        <span>$20</span>
-                    </div>
+                    <p>No orders found.</p>
                 @endif
 
                 <div class="order-row total">
                     <strong>Total</strong>
-                    <strong>{{ $plan_price ?? '$240' }}</strong>
+                    <strong>${{ isset($total) ? number_format($total, 2) : '0.00' }}</strong>
                 </div>
-
-
 
                 <div class="payment-section">
                     <h3 style="text-align:center;">PayPal</h3>
                     <button class="button" style="width: 100%; margin-top: 1rem;">Pay via PayPal</button>
                 </div>
-                </form>
             </div>
+
+
+            </form>
         </div>
+    </div>
+
     </div>
 
     <script>

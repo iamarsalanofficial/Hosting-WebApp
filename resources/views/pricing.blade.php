@@ -11,54 +11,53 @@
 <body>
     <!-- Navbar -->
     @include('forntend.nav')
+    
     <!-- Main Section -->
     <section>
-        <div class="main-container">
-            <h1 class="selected-plan-head">Choose Your Plan</h1>
-            @if (session('success'))
-                <div style="color: green; font-weight: bold;">
-                    {{ session('success') }}
-                </div>
-            @endif
-            <form action="{{ route('checkout.process') }}" method="POST">
-                @csrf
-                <div class="pricing-plan">
-                    <div class="card" onclick="selectPlan('1 YEAR', '$240')">
-                        <div class="duration">1 YEAR</div>
-                        <div class="price">$20</div>
-                        <div class="per-month">per month</div>
-                        <button type="submit" name="plan" class="submit-button" value="1 Year">Select</button>
-                    </div>
-                    <div class="card" onclick="selectPlan('2 YEARS', '$456')">
-                        <div class="save-badge">Save $48</div>
-                        <div class="duration">2 YEARS</div>
-                        <div class="price">$19</div>
-                        <div class="per-month">per month</div>
-                        <button type="submit" class="submit-button" name="plan" value="2 Years">Select</button>
-                    </div>
-                    <div class="card" onclick="selectPlan('3 YEARS', '$648')">
-                        <div class="save-badge">Save $72</div>
-                        <div class="duration">3 YEARS</div>
-                        <div class="price">$18</div>
-                        <div class="per-month">per month</div>
-                        <button type="submit" class="submit-button" name="plan" value="3 Years">Select</button>
-                    </div>
-                </div>
+    <div class="main-container">
+        <h1 class="selected-plan-head">Choose Your Plan</h1>
 
-                <!-- Hidden Fields -->
-                <input type="hidden" name="plan_duration" id="plan_duration" value="">
-                <input type="hidden" name="plan_price" id="plan_price" value="">
-            </form>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
 
-            <script>
-                function selectPlan(duration, price) {
-                    document.getElementById('plan_duration').value = duration;
-                    document.getElementById('plan_price').value = price;
-                }
-            </script>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
-        </div>
-    </section>
+        <form action="{{ route('checkout.process') }}" method="POST">
+            @csrf
+            <div class="pricing-plan">
+                @foreach ($plans as $plan)
+                    <div class="card" onclick="selectPlan('{{ $plan['name'] }}', '{{ $plan['price'] }}')">
+                        @if(isset($plan['save_badge']))
+                            <div class="save-badge">{{ $plan['save_badge'] }}</div>
+                        @endif
+                        <div class="duration">{{ $plan['name'] }}</div>
+                        <div class="price">${{ $plan['price'] }}</div>
+                        <div class="per-month">per month</div>
+                        <button type="submit" name="plan" class="submit-button" value="{{ $plan['name'] }}">Select</button>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Hidden Fields -->
+            <input type="hidden" name="plan_duration" id="plan_duration" value="">
+            <input type="hidden" name="plan_price" id="plan_price" value="">
+        </form>
+
+        <script>
+            function selectPlan(duration, price) {
+                document.getElementById('plan_duration').value = duration;
+                document.getElementById('plan_price').value = price;
+            }
+        </script>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
